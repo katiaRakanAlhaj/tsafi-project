@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ============================================================
+   1. FONT-FACE RULES
+   ============================================================ */
+
+/* --- Montserrat --- */
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   2. CONTAINERS
+   ============================================================ */
+.container1 {
+  max-width: 92%;
+}
+
+/* ============================================================
+   3. THEME VARIABLES
+   ============================================================ */
+@theme {
+  --color-primary: #0C6766;
+  --color-secondary: #002f3c;
+  --color-negative: #d22e2e;
+
+  /* expose fonts to Tailwind utilities if you want (font-montserrat etc.) */
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+/* ============================================================
+   4. GLOBAL / BASE STYLES
+   ============================================================ */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Default font + weight (adjust per project — Montserrat is the new base) */
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+/* ============================================================
+   5. RESPONSIVE FONT SCALING
+   ============================================================ */
+@media only screen and (max-width: 400px) {
+  html { font-size: 14px; }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 769px) {
+  html { font-size: 16px; }
+}
+
+@media only screen and (min-width: 770px) and (max-width: 863px) {
+  html { font-size: 8px; }
+}
+
+@media only screen and (min-width: 864px) and (max-width: 910px) {
+  html { font-size: 8.5px; }
+}
+
+@media only screen and (min-width: 910px) and (max-width: 976px) {
+  html { font-size: 10px; }
+}
+
+@media only screen and (min-width: 977px) and (max-width: 993px) {
+  html { font-size: 10px; }
+}
+
+@media only screen and (min-width: 994px) and (max-width: 1023px) {
+  html { font-size: 10px; }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1099px) {
+  html { font-size: 10.7px; }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1250px) {
+  html { font-size: 12px; }
+}
+
+@media only screen and (min-width: 1251px) and (max-width: 1281px) {
+  html { font-size: 12.5px; }
+}
+
+@media only screen and (min-width: 1282px) and (max-width: 1365px) {
+  html { font-size: 13px; }
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1400px) {
+  html { font-size: 13.5px; }
+}
+
+@media only screen and (min-width: 1401px) and (max-width: 1534px) {
+  html { font-size: 15px; }
+}
+
+@media only screen and (min-width: 1535px) and (max-width: 1600px) {
+  html { font-size: 16px; }
+}
+
+@media only screen and (min-width: 1601px) and (max-width: 1800px) {
+  html { font-size: 16.5px; }
+}
+
+@media only screen and (min-width: 1801px) and (max-width: 2000px) {
+  html { font-size: 18.7px; }
+}
+
+@media only screen and (min-width: 2001px) and (max-width: 2200px) {
+  html { font-size: 20px; }
+}
+
+@media only screen and (min-width: 2201px) and (max-width: 2500px) {
+  html { font-size: 22px; }
+}
+
+@media only screen and (min-width: 2501px) and (max-width: 2800px) {
+  html { font-size: 26px; }
+}
+
+@media only screen and (min-width: 2801px) and (max-width: 3000px) {
+  html { font-size: 30px; }
+}
+
+@media only screen and (min-width: 3001px) and (max-width: 3200px) {
+  html { font-size: 30px; }
+}
+
+@media only screen and (min-width: 3201px) and (max-width: 35000px) {
+  html { font-size: 33px; }
+}
+
+@media only screen and (min-width: 3501px) {
+  html { font-size: 45px; }
+}
