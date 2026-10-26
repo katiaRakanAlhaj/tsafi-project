@@ -1,1 +1,9 @@
-{}
+{
+    "download_app":"DOWNLOAD APP",
+    "menu":{
+        "Business":"Business",
+        "About":"About",
+        "sign_up":"Sign up as Business",
+        "login":"My Store login"
+    }
+}

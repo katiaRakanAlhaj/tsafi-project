@@ -16,6 +16,7 @@
     "i18next": "^26.5.10",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "react-fast-marquee": "^1.6.5",
     "react-helmet-async": "^3.0.0",
     "react-hook-form": "^7.90.0",
     "react-hot-toast": "^2.6.1",

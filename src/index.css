@@ -29,19 +29,42 @@
   font-display: swap;
 }
 
-@font-face {
+/* @font-face {
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
-
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Arabic-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+} */ */
+/* @font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Arabic-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+/* @font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Arabic-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+} */
 /* ============================================================
    2. CONTAINERS
    ============================================================ */
 .container1 {
   max-width: 92%;
+}
+.container2 {
+  max-width: 82%;
 }
 
 /* ============================================================
@@ -52,7 +75,7 @@
   --color-secondary: #002f3c;
   --color-negative: #d22e2e;
 
-  /* expose fonts to Tailwind utilities if you want (font-montserrat etc.) */
+  --font-sans: "Montserrat", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
 }
 
@@ -62,12 +85,6 @@
 html::-webkit-scrollbar {
   display: none;
 }
-
-/* Default font + weight (adjust per project — Montserrat is the new base) */
-html {
-  font-family: "Montserrat", sans-serif;
-}
-
 
 /* ============================================================
    5. RESPONSIVE FONT SCALING
@@ -88,7 +105,7 @@ html {
   html { font-size: 8.5px; }
 }
 
-@media only screen and (min-width: 910px) and (max-width: 976px) {
+@media only screen and (min-width: 911px) and (max-width: 976px) {
   html { font-size: 10px; }
 }
 
@@ -156,10 +173,13 @@ html {
   html { font-size: 30px; }
 }
 
-@media only screen and (min-width: 3201px) and (max-width: 35000px) {
+@media only screen and (min-width: 3201px) and (max-width: 3500px) {
   html { font-size: 33px; }
 }
 
 @media only screen and (min-width: 3501px) {
   html { font-size: 45px; }
+}
+body{
+  background-color: #F9F3F0;
 }

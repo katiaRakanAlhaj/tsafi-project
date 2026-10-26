@@ -2,39 +2,51 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.svg";
 
+// ✅ 1. Move the array OUTSIDE the component (just like your second file)
+// We only store the `key` here, NOT the translated text.
+const navLinks = [
+  { key: "Business", path: "#" },
+  { key: "About", path: "#" },
+  { key: "sign_up", path: "#" },
+  { key: "login", path: "#" },
+];
+
 const Navbar = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const isAr = i18n.language === "ar";
 
-  // Navigation Links based on your image
-  const navLinks = [
-    { title: "تسجيل الدخول إلى متجري", path: "#" },
-    { title: "سجّل كصاحب عمل", path: "#" },
-    { title: "عن التطبيق", path: "#" },
-    { title: "الأعمال", path: "#" },
-  ];
+  // Function to toggle language
+  const toggleLanguage = () => {
+    i18n.changeLanguage(isAr ? "en" : "ar");
+  };
 
   return (
     <div className="relative z-10 w-full">
       <div className="w-full bg-primary">
-        {/* Container flexes in reverse if RTL, normal if LTR */}
-        <div className="container1 mx-auto flex justify-between items-center h-[6.5rem] px-4">
-          
-        
-
-          {/* RIGHT SIDE: Links, Button, EN toggle */}
+        <div className="container1 mx-auto flex justify-between items-center h-[7rem] px-4">
+          {/* LEFT SIDE: Logo */}
           <div className="flex items-center gap-6">
-            <p className="text-white">EN</p>
-            {/* Call to Action Button */}
-            <button className="bg-white text-primary font-bold px-[2.8rem] py-[0.8rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.3rem]">
-              تحميل التطبيق
-            </button>
+            <Link to="/">
+              <img
+                className="w-[14rem] object-contain"
+                src={logo}
+                alt="TSAFI Logo"
+              />
+            </Link>
+          </div>
+
+          {/* RIGHT SIDE: Links, Button, EN/AR toggle */}
+          <div className="flex items-center gap-6">
             {/* Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-5 text-white text-[1.3rem] font-normal">
+            <nav className="hidden lg:flex items-center gap-5 text-white text-[1.2rem] font-normal">
               {navLinks.map((link, index) => (
-                <div key={index} className="flex items-center gap-4">
-                  <Link to={link.path} className="hover:text-white/80 transition-colors">
-                    {link.title}
+                <div key={link.key} className="flex items-center gap-4">
+                  <Link
+                    to={link.path}
+                    className="hover:text-white/80 transition-colors"
+                  >
+                    {/* ✅ 2. Use the key to translate here */}
+                    {t(`menu.${link.key}`)} 
                   </Link>
                   {/* Divider Pipe (not shown on last item) */}
                   {index !== navLinks.length - 1 && (
@@ -44,17 +56,18 @@ const Navbar = () => {
               ))}
             </nav>
 
-
-          </div>
-            {/* LEFT SIDE: Logo */}
-          <div className="flex items-center gap-6">
-            <Link to="/">
-              <img 
-                className="w-[14rem] object-contain" 
-                src={logo} 
-                alt="TSAFI Logo" 
-              />
-            </Link>
+            {/* Call to Action Button */}
+            <button className="bg-white text-primary font-bold px-[1.8rem] py-[1rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.1rem] cursor-pointer">
+              {t("download_app")}
+            </button>
+            
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="text-white font-bold hover:text-white/80 transition-colors cursor-pointer"
+            >
+              {isAr ? "EN" : "AR"}
+            </button>
           </div>
         </div>
       </div>

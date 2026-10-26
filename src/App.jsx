@@ -6,13 +6,13 @@ import {
   useParams,
   useNavigate,
   Outlet,
-  Navigate,
 } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Wrapper from "./component/wrapper/wrapper";
-
+import Home from "./pages/Home";
+import "../src/i18n/i18n"; // Ensure i18n is imported and executed
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -30,19 +30,14 @@ function LanguageHandler() {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
 
-  // Resolve a valid language code from URL → localStorage → default "ar"
+  // Resolve language from URL parameter or fallback to localStorage / "ar"
   let languageToUse = lang;
   if (languageToUse !== "en" && languageToUse !== "ar") {
     languageToUse = localStorage.getItem("language") || "ar";
   }
 
   useEffect(() => {
-    // Guard — only call if i18n is a real i18next instance
-    if (
-      i18n &&
-      typeof i18n.changeLanguage === "function" &&
-      i18n.language !== languageToUse
-    ) {
+    if (i18n && typeof i18n.changeLanguage === "function" && i18n.language !== languageToUse) {
       i18n.changeLanguage(languageToUse);
     }
 
@@ -51,11 +46,12 @@ function LanguageHandler() {
 
     html.lang = languageToUse;
     html.dir = isArabic ? "rtl" : "ltr";
+    html.style.fontFamily = '"Montserrat", sans-serif';
 
     localStorage.setItem("language", languageToUse);
   }, [languageToUse, i18n]);
 
-  // If the user hits "/" with no lang, send them to their resolved language
+  // If user visits root "/", redirect them to their active language URL
   useEffect(() => {
     if (!lang) {
       navigate(`/${languageToUse}`, { replace: true });
@@ -65,19 +61,17 @@ function LanguageHandler() {
   return <Outlet />;
 }
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<LanguageHandler />}>
+      <Route path="/:lang" element={<Wrapper />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Route>
+  )
+);
+
 function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route element={<LanguageHandler />}>
-        <Route path="/" element={<Navigate to="/ar" replace />} />
-
-        <Route path="/:lang" element={<Wrapper />}>
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Route>
-      </Route>,
-    ),
-  );
-
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
