@@ -43,7 +43,7 @@ const HomeImage = () => {
                 style={{ boxShadow: "0px 4px 6px -4px #0000001A" }}
                 className={buttonClasses}
               >
-                <p>{i18next.t("menu.sign_up")}</p>
+                <p>{i18next.t("sign_up")}</p>
               </button>
             </div>
           </div>
