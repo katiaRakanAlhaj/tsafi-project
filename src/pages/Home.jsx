@@ -1,3 +1,4 @@
+import Bar from "../features/home/component/Bar";
 import BusinessSolutions from "../features/home/component/BusinessSolutions";
 import HomeImage from "../features/home/component/homeImage";
 import HowUseApplication from "../features/home/component/howUseApplication";
@@ -9,10 +10,12 @@ const Home = () => {
     <div>
       <HomeImage />
       <WhyChooseTsafi />
+      <Bar />
       <HowUseApplication />
       <BusinessSolutions />
-      <JoinUs/>
+      <JoinUs />
     </div>
   );
 };
+
 export default Home;

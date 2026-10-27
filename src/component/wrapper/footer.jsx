@@ -49,7 +49,9 @@ const Footer = () => {
         </h1>
         <div className="flex gap-x-[8rem]">
           {footerItems?.map((footerItems) => (
-            <div className="text-white text-lg cursor-pointer">{footerItems}</div>
+            <div className="text-white text-lg cursor-pointer">
+              {footerItems}
+            </div>
           ))}
         </div>
         <p className=" text-[#F2F2F2CF] text-md">

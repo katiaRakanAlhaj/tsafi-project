@@ -23,12 +23,12 @@ const Navbar = () => {
   return (
     <div className="relative z-10 w-full">
       <div className="w-full bg-primary">
-        <div className="container1 mx-auto flex justify-between items-center h-[7rem] px-4">
+        <div className="container5 mx-auto flex justify-between items-center h-[7rem] px-4 w-full">
           {/* LEFT SIDE: Logo */}
           <div className="flex items-center gap-6">
             <Link to="/">
               <img
-                className="w-[14rem] object-contain"
+                className="w-[13rem] object-contain"
                 src={logo}
                 alt="TSAFI Logo"
               />
@@ -57,7 +57,7 @@ const Navbar = () => {
             </nav>
 
             {/* Call to Action Button */}
-            <button className="bg-white text-primary font-bold px-[1.8rem] py-[1rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.1rem] cursor-pointer">
+            <button className="bg-white text-primary font-bold px-[1.6rem] py-[1rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.1rem] cursor-pointer">
               {t("download_app")}
             </button>
             
