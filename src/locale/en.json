@@ -1,10 +1,10 @@
 {
   "download_app": "DOWNLOAD APP",
-  "sign_up": "Sign up as Business",
+  "sign_up": "SIGN UP AS BUSINESS",
   "menu": {
     "Business": "Business",
     "About": "About",
-    "sign_up": "Sign up as Business",
+    "sign_up": "SIGN UP AS BUSINESS",
     "login": "My Store login"
   }
 }

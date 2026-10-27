@@ -14,7 +14,6 @@ const JoinUs = () => {
         <button className={buttonClasses}>{i18next.t("download_app")}</button>
         <button className={buttonClasses}>{i18next.t("sign_up")}</button>
       </div>
-      
     </div>
   );
 };

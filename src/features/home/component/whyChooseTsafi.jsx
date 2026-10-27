@@ -61,7 +61,7 @@ const WhyChooseTsafi = () => {
       <div className="flex justify-center items-center">
         <div className="w-[55%]">
           <div className="flex flex-col justify-center items-center text-center">
-            <p className="text-[#13615C] text-center leading-relaxed text-2xl mt-[2rem]">
+            <p className="text-[#13615C] text-center leading-relaxed text-3xl mt-[2rem]">
               Tsafi is a social impact company on a mission to inspire and
               empower everyone to fight food waste together.
             </p>
@@ -73,7 +73,7 @@ const WhyChooseTsafi = () => {
             <h1 className="text-[#036664] mt-[3rem] font-bold text-5xl">
               WHY USE
             </h1>
-            <h1 className="font-bold text-5xl mt-[1rem] -tracking-tighter text-[#FF914D]">
+            <h1 className="font-bold text-5xl mt-[1rem] tracking-[1rem] text-[#FF914D]">
               TSAFI
             </h1>
           </div>
