@@ -1,8 +1,8 @@
-import choose1 from "../../../assets/images/choose1.png";
-import choose2 from "../../../assets/images/choose2.png";
-import choose3 from "../../../assets/images/choose3.png";
-import choose4 from "../../../assets/images/choose4.png";
-import bagImage from "../../../assets/images/Bag Image 2.png";
+import choose1 from "@/assets/images/choose1.png";
+import choose2 from "@/assets/images/choose2.png";
+import choose3 from "@/assets/images/choose3.png";
+import choose4 from "@/assets/images/choose4.png";
+import bagImage from "@/assets/images/Bag Image 2.png";
 
 const points = [
   {

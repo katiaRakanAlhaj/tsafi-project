@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Wrapper from "./component/wrapper/wrapper";
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 const SUPPORTED_LANGS = ["en", "ar"];
 const DEFAULT_LANG = "ar";
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <Home /> },
           // Add more pages here:
-          // { path: "about", element: <About /> },
+          { path: "About", element: <About /> },
         ],
       },
     ],

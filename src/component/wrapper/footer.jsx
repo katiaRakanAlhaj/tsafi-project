@@ -1,12 +1,18 @@
-import facebook from "../../assets/images/facebook.svg";
-import linkedIn from "../../assets/images/linkedIn.svg";
-import tiktok from "../../assets/images/tiktok.svg";
-import instgram from "../../assets/images/instgram.svg";
-import twitter from "../../assets/images/twitter.svg";
-import googleplay from "../../assets/images/googleplay.png";
-import AppStore from "../../assets/images/AppStore.png";
+import { useLocation } from "react-router-dom";
+import facebook from "@/assets/images/facebook.svg";
+import linkedIn from "@/assets/images/linkedIn.svg";
+import tiktok from "@/assets/images/tiktok.svg";
+import instgram from "@/assets/images/instgram.svg";
+import twitter from "@/assets/images/twitter.svg";
+import googleplay from "@/assets/images/googleplay.png";
+import AppStore from "@/assets/images/AppStore.png";
 
 const Footer = () => {
+  const location = useLocation();
+  
+  // Check if "about" is anywhere in the URL path (ignores case and language prefixes)
+  const isAbout = location.pathname.toLowerCase().includes("about");
+
   const icons = [
     { id: "instagram", icon: instgram, alt: "Instagram", link: "#" },
     { id: "facebook", icon: facebook, alt: "Facebook", link: "#" },
@@ -14,6 +20,7 @@ const Footer = () => {
     { id: "twitter", icon: twitter, alt: "Twitter", link: "#" },
     { id: "tiktok", icon: tiktok, alt: "TikTok", link: "#" },
   ];
+
   const footerItems = [
     "Legal",
     "Privacy Policy",
@@ -21,8 +28,13 @@ const Footer = () => {
     "Terms & Conditions",
     "Food Waste Sources",
   ];
+
   return (
-    <div className="w-full h-[28rem] bg-[#136766] py-[2rem] mt-[5rem]">
+    <div 
+      className={`w-full h-[28rem] bg-[#136766] py-[2rem] ${
+        isAbout ? "mt-0" : "mt-[5rem]"
+      }`}
+    >
       <div className="flex justify-center items-center flex-col space-y-[1.5rem]">
         <div className="flex items-center gap-x-[1rem]">
           {icons.map((item) => (
@@ -41,20 +53,20 @@ const Footer = () => {
           ))}
         </div>
         <div className="flex gap-x-3">
-          <img className="w-[8.5rem] cursor-pointer" src={googleplay} />
-          <img className="w-[8.5rem] cursor-pointer" src={AppStore} />
+          <img className="w-[8.5rem] cursor-pointer" src={googleplay} alt="Google Play" />
+          <img className="w-[8.5rem] cursor-pointer" src={AppStore} alt="App Store" />
         </div>
-        <h1 className=" text-white font-bold tracking-[7rem] text-[6.7rem] ml-[3.5rem]">
+        <h1 className="text-white font-bold tracking-[7rem] text-[6.7rem] ml-[3.5rem]">
           TSAFI
         </h1>
         <div className="flex gap-x-[8rem]">
-          {footerItems?.map((footerItems) => (
-            <div className="text-white text-lg cursor-pointer">
-              {footerItems}
+          {footerItems.map((item) => (
+            <div key={item} className="text-white text-lg cursor-pointer">
+              {item}
             </div>
           ))}
         </div>
-        <p className=" text-[#F2F2F2CF] text-md">
+        <p className="text-[#F2F2F2CF] text-md">
           Copyright © Tsafi . All Rights Reserved.
         </p>
       </div>

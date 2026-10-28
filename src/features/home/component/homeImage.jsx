@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import heroImage from "../../../assets/images/heroImage.png";
+import heroImage from "@/assets/images/heroImage.png";
 // Note: If you have a phone image, import it here:
 // import phoneImage from "../../../assets/images/phoneImage.png";
 

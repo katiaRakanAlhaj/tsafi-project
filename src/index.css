@@ -34,35 +34,34 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* @font-face {
+ @font-face {
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
+/* @font-face {
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat-Arabic-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-} */ */
-/* @font-face {
+} 
+ @font-face {
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat-Arabic-Regular.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
-/* @font-face {
+ @font-face {
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat-Arabic-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-} */
+}  */
 /* ============================================================
    2. CONTAINERS
    ============================================================ */
@@ -80,6 +79,18 @@
 }
 .container5{
   max-width: 92%;
+}
+.container6{
+  max-width: 89%;
+}
+.container7{
+  max-width: 80%;
+}
+.container8{
+  max-width: 70%;
+}
+.container9 {
+  max-width: 95%;
 }
 /* ============================================================
    3. THEME VARIABLES

@@ -1,5 +1,5 @@
-import solution1 from "../../../assets/images/solution1.png";
-import solution2 from "../../../assets/images/solution2.png";
+import solution1 from "@/assets/images/solution1.png";
+import solution2 from "@/assets/images/solution2.png";
 
 const solutions = [
   {
