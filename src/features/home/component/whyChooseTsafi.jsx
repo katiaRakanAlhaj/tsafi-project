@@ -11,6 +11,7 @@ const points = [
     alt: "Enjoy Good Food",
     text: "Enjoy Good Food At ½ Price Or Less",
     side: "left",
+    order: "order-1 md:order-1",
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const points = [
     alt: "Help Environment",
     text: "Help The Environment By Reducing Food Waste",
     side: "left",
+    order: "order-4 md:order-3",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const points = [
     alt: "Rescue Food",
     text: "Rescue Food Near You",
     side: "right",
+    order: "order-2 md:order-2",
   },
   {
     id: 4,
@@ -32,9 +35,11 @@ const points = [
     alt: "Try Something New",
     text: "Try Something New From Local Cafes, Bakeries Or Restaurants",
     side: "right",
+    order: "order-3 md:order-4",
   },
 ];
 
+/* بطاقة النقاط للشاشات الكبيرة (lg فأكبر) */
 const PointCard = ({ point, align }) => (
   <div className={`flex flex-col items-center ${align} gap-3`}>
     <img
@@ -42,11 +47,21 @@ const PointCard = ({ point, align }) => (
       alt={point.alt}
       className="object-contain w-[3rem]"
     />
-    <p
-      className={`text-[#0C6766] font-bold text-lg leading-relaxed ${
-        align.includes("items-end") ? "max-w-[70%]" : "max-w-[70%]"
-      }`}
-    >
+    <p className="text-[#0C6766] font-bold text-lg leading-relaxed max-w-[70%]">
+      {point.text}
+    </p>
+  </div>
+);
+
+/* بطاقة النقاط للشاشات الصغيرة والمتوسطة (أصغر من lg) */
+const CompactPointCard = ({ point }) => (
+  <div className={`flex items-center gap-3 ${point.order}`}>
+    <img
+      src={point.image}
+      alt={point.alt}
+      className="object-contain w-10 md:w-12 shrink-0"
+    />
+    <p className="text-[#0C6766] font-bold text-sm md:text-base leading-snug">
       {point.text}
     </p>
   </div>
@@ -57,40 +72,41 @@ const WhyChooseTsafi = () => {
   const rightPoints = points.filter((p) => p.side === "right");
 
   return (
-    <div>
+    <div className="px-4 lg:px-0 pb-10 lg:pb-0">
+      {/* قسم العناوين والنصوص التعريفية */}
       <div className="flex justify-center items-center">
-        <div className="w-[55%]">
+        <div className="w-full lg:w-[55%]">
           <div className="flex flex-col justify-center items-center text-center">
-            <p className="text-[#13615C] text-center leading-relaxed text-3xl mt-[2rem]">
+            <p className="text-[#13615C] text-center text-xl md:text-2xl lg:text-3xl mt-[2rem]">
               Tsafi is a social impact company on a mission to inspire and
               empower everyone to fight food waste together.
             </p>
-            <p className="text-md text-[#000000] mt-2">
-              Our app is the syria largest marketplace for surplus food. We help
+            <p className="text-sm lg:text-base text-[#000000] mt-2 max-w-[90%] lg:max-w-[85%]">
+              Our app is Syria's largest marketplace for surplus food. We help
               users rescue good food from going to waste, offering great value
               for money at local stores, cafes and restaurants.
             </p>
-            <h1 className="text-[#036664] mt-[3rem] font-bold text-5xl">
+            <h1 className="text-[#036664] mt-10 md:mt-12 font-bold text-3xl md:text-4xl lg:text-5xl">
               WHY USE
             </h1>
-            <h1 className="font-bold text-5xl mt-[1rem] tracking-[1rem] text-[#FF914D]">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl mt-[1rem] tracking-[0.6rem] md:tracking-[1rem] text-[#FF914D]">
               TSAFI
             </h1>
           </div>
         </div>
       </div>
 
-      {/* 4 Points + Bag Section */}
-      <div className="grid grid-cols-3 gap-4 items-center mt-[2rem]">
-        {/* LEFT COLUMN */}
-        <div className="flex flex-col gap-16 md:gap-28 items-center lg:items-end text-center lg:text-right">
+      {/* ===== الشاشات الكبيرة (lg فأكبر): تصميم 3 أعمدة ===== */}
+      <div className="hidden lg:grid grid-cols-3 gap-4 items-center mt-[3rem]">
+        {/* العمود الأيسر */}
+        <div className="flex flex-col gap-16 md:gap-28 items-end text-right">
           {leftPoints.map((point) => (
             <PointCard key={point.id} point={point} align="lg:items-end" />
           ))}
         </div>
 
-        {/* CENTER COLUMN (Bag Image) */}
-        <div className="flex justify-center items-center relative order-first order-none mb-0">
+        {/* العمود الأوسط (صورة الحقيبة) */}
+        <div className="flex justify-center items-center relative">
           <img
             src={bagImage}
             alt="Tsafi Bag"
@@ -98,10 +114,28 @@ const WhyChooseTsafi = () => {
           />
         </div>
 
-        {/* RIGHT COLUMN */}
-        <div className="flex flex-col gap-16 md:gap-28 items-center lg:items-start">
+        {/* العمود الأيمن */}
+        <div className="flex flex-col gap-16 md:gap-28 items-start">
           {rightPoints.map((point) => (
             <PointCard key={point.id} point={point} align="lg:items-start" />
+          ))}
+        </div>
+      </div>
+
+      {/* ===== الشاشات الأصغر من lg: الحقيبة بالأعلى والنقاط تحتها ===== */}
+      <div className="lg:hidden">
+        <div className="flex justify-center mt-6">
+          <img
+            src={bagImage}
+            alt="Tsafi Bag"
+            className="w-56 md:w-72 object-contain drop-shadow-2xl"
+          />
+        </div>
+
+        {/* شبكة النقاط (عمود واحد للشاشات الصغيرة، شبكة 2x2 للشاشات المتوسطة) */}
+        <div className="mx-auto mt-8 w-full max-w-[22rem] md:max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 md:gap-y-8">
+          {points.map((point) => (
+            <CompactPointCard key={point.id} point={point} />
           ))}
         </div>
       </div>

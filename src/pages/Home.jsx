@@ -11,7 +11,7 @@ const Home = () => {
       <HomeImage />
       <WhyChooseTsafi />
       <Bar />
-      <HowUseApplication />
+      {/* <HowUseApplication /> */}
       <BusinessSolutions />
       <JoinUs />
     </div>

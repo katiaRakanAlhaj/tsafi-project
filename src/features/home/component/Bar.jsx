@@ -17,7 +17,7 @@ const Bar = () => {
       ];
 
   return (
-    <div className="w-full bg-[#004d40] py-4 overflow-hidden mt-[3rem]">
+    <div className="w-full bg-[#004d40] py-4 overflow-hidden md:mt-[3rem] mt-[2rem]">
       <Marquee
         speed={100}
         gradient={false}
@@ -29,7 +29,7 @@ const Bar = () => {
           <span
             key={index}
             dir={isArabic ? "rtl" : "ltr"}
-            className="text-white text-[1.5rem] font-bold mx-8 uppercase tracking-wider"
+            className="text-white md:text-[1.5rem] text-[1.2rem] font-bold mx-8 uppercase tracking-wider"
           >
             {item}
           </span>

@@ -1,7 +1,7 @@
-
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/images/logo.svg";
+// import logoAr from "@/assets/images/logo-ar.svg"; // Arabic logo (تصافي), if you have a separate file
 
 const navLinks = [
   { key: "Business", path: "#" },
@@ -20,24 +20,17 @@ const Navbar = () => {
 
   const toggleLanguage = async () => {
     const newLang = isAr ? "en" : "ar";
-
     try {
       await i18n.changeLanguage(newLang);
-
       localStorage.setItem("language", newLang);
 
-      // Replace the current language in the URL.
       const currentPath = location.pathname;
       const updatedPath = lang
         ? currentPath.replace(/^\/[^/]+/, `/${newLang}`)
         : `/${newLang}${currentPath === "/" ? "" : currentPath}`;
 
-      navigate(`${updatedPath}${location.search}${location.hash}`);
-
-      // Reload after the URL has been updated.
-      window.location.assign(
-        `${updatedPath}${location.search}${location.hash}`
-      );
+      // assign() already navigates and reloads, so navigate() is redundant
+      window.location.assign(`${updatedPath}${location.search}${location.hash}`);
     } catch (error) {
       console.error("Failed to change language:", error);
     }
@@ -46,29 +39,31 @@ const Navbar = () => {
   return (
     <div className="relative z-10 w-full">
       <div className="w-full bg-primary">
-        <div className="container5 mx-auto flex justify-between items-center h-[7rem] px-4 w-full">
+        {/* dir="ltr" keeps the layout identical in Arabic: logo left, toggle right */}
+        <div
+          dir="ltr"
+          className="container5 mx-auto flex justify-between items-center h-[7rem] px-4 w-full"
+        >
           {/* Logo */}
           <div className="flex items-center gap-6">
             <Link to={`/${isAr ? "ar" : "en"}`}>
               <img
                 className="w-[13rem] object-contain"
-                src={logo}
+                src={logo /* isAr ? logoAr : logo */}
                 alt="TSAFI Logo"
               />
             </Link>
           </div>
 
-          {/* Navigation links and language controls */}
+          {/* Links + download + language */}
           <div className="flex items-center gap-6">
-            <nav className="hidden lg:flex items-center gap-5 text-white text-[1.2rem] font-normal">
+            <nav className={`hidden lg:flex items-center gap-5 text-white ${i18n.language === "ar" ? "text-[1.3rem]" : "text-[1.2rem]"}`}>
               {navLinks.map((link, index) => (
-                <div
-                  key={link.key}
-                  className="flex items-center gap-4"
-                >
+                <div key={link.key} className="flex items-center gap-4">
                   <Link
                     to={link.path}
-                    className="hover:text-white/80 transition-colors"
+                    dir={isAr ? "rtl" : "ltr"}
+                    className="hover:text-white/80 transition-colors whitespace-nowrap"
                   >
                     {t(`menu.${link.key}`)}
                   </Link>
@@ -80,15 +75,14 @@ const Navbar = () => {
               ))}
             </nav>
 
-            {/* Download button */}
             <button
               type="button"
-              className="bg-white text-primary font-bold px-[1.6rem] py-[1rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.1rem] cursor-pointer"
+              dir={isAr ? "rtl" : "ltr"}
+              className="bg-white text-primary font-bold w-[13rem] py-[1rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.1rem] cursor-pointer"
             >
               {t("download_app")}
             </button>
 
-            {/* Language toggle */}
             <button
               type="button"
               onClick={toggleLanguage}
