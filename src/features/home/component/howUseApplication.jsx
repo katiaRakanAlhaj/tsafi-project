@@ -37,7 +37,7 @@ const stepsData = [
 ];
 
 const navButtonStyles =
-  "w-14 h-14 rounded-full flex items-center justify-center text-[#67D695] hover:bg-[#2ab59b] hover:text-white transition-all cursor-pointer";
+  "w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center text-[#67D695] hover:bg-[#2ab59b] hover:text-white transition-all cursor-pointer";
 
 // Left → right slide only (no vertical movement)
 const textVariants = {
@@ -80,15 +80,15 @@ const HowUseApplication = () => {
   };
 
   return (
-    <div className="bg-primary w-full mt-[3rem] px-6 lg:px-24 py-[4rem]">
+    <div className="bg-primary w-full mt-[3rem] px-6 md:px-10 lg:px-24 py-[2.5rem] md:py-[4rem]">
       <div className="container4 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[2rem] lg:gap-[4rem] items-center">
-          {/* Left Column: Phone Frame with Swiper Inside */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-start">
-            <div className="relative w-[18.5rem] h-[35rem] bg-black rounded-[3.125rem] p-[0.75rem] shadow-2xl border-4 border-[#222]">
-              <div className="absolute top-[1.125rem] left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-xl z-30 flex items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] lg:grid-cols-12 gap-[2rem] lg:gap-[4rem] items-center">
+          {/* Phone: sm = middle, md/lg = left column */}
+          <div className="order-2 md:order-none lg:col-span-5 flex justify-center md:justify-start">
+            <div className="relative w-[16rem] h-[30rem] lg:w-[18.5rem] lg:h-[35rem] bg-black rounded-[3.125rem] p-[0.75rem] shadow-2xl border-4 border-[#222]">
+              {/* <div className="absolute top-[1.125rem] left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-xl z-30 flex items-center justify-center">
                 <div className="w-12 h-1 bg-[#222] rounded-full"></div>
-              </div>
+              </div> */}
 
               <div className="w-full h-full bg-white rounded-[2.375rem] overflow-hidden relative">
                 <Swiper
@@ -113,10 +113,10 @@ const HowUseApplication = () => {
             </div>
           </div>
 
-          {/* Right Column: Dynamic Text & Custom Navigation */}
-          <div className="lg:col-span-7 text-white flex flex-col justify-center lg:ml-[-8rem]">
-            {/* Framer Motion animated text — left to right only */}
-            <div className="relative min-h-[16rem] overflow-hidden">
+          {/* Right column: "contents" on sm so text & nav become separate grid items */}
+          <div className="contents md:flex md:flex-col md:justify-center min-w-0 lg:col-span-7 text-white lg:ml-[-8rem]">
+            {/* Text: sm = top */}
+            <div className="order-1 md:order-none relative min-h-[11rem] md:min-h-[16rem] overflow-hidden">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={activeIndex}
@@ -127,23 +127,23 @@ const HowUseApplication = () => {
                   exit="exit"
                   className="flex flex-col"
                 >
-                  <div className="text-[#FFFB9B] font-bold text-2xl uppercase">
+                  <div className="text-[#FFFB9B] font-bold text-lg md:text-xl lg:text-2xl uppercase">
                     {currentStep.title}
                   </div>
 
-                  <h2 className="lg:text-3xl font-extrabold mt-[2rem] tracking-wide">
+                  <h2 className="text-2xl md:text-3xl font-extrabold mt-[1rem] md:mt-[2rem] tracking-wide">
                     {currentStep.step}
                   </h2>
 
-                  <p className="text-gray-200 mt-[2rem] w-[90%] md:w-[70%] lg:w-[50%] lg:text-xl max-w-xl mb-10 leading-relaxed">
+                  <p className="text-gray-200 mt-[1rem] md:mt-[2rem] w-full md:w-[90%] lg:w-[50%] text-base md:text-lg lg:text-xl max-w-xl mb-6 md:mb-10 leading-relaxed">
                     {currentStep.description}
                   </p>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Navigation Controls */}
-            <div className="flex items-center gap-6">
+            {/* Navigation: sm = bottom */}
+            <div className="order-3 md:order-none flex items-center gap-6">
               <button
                 onClick={handlePrev}
                 className={navButtonStyles}

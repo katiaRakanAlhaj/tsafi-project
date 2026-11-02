@@ -4,7 +4,7 @@ import heroImage from "@/assets/images/heroImage.png";
 const HomeImage = () => {
   const features = ["LOWER PRICES", "EXCELLENT QUALITY", "ZERO WASTE"];
   const buttonClasses =
-    "w-[17rem] h-[3.3rem] font-bold text-[#000000] cursor-pointer rounded-full bg-[#F5F5F5] max-md:w-full max-md:h-[3.5rem] md:text-[1rem] text-sm";
+    "lg:w-[17rem] md:w-[14rem] lg:h-[3.3rem] md:h-[3rem] font-bold text-[#000000] cursor-pointer rounded-full bg-[#F5F5F5] max-md:w-full max-md:h-[3.5rem] md:text-[1rem] text-sm";
 
   const renderButtons = () => (
     <>
@@ -25,7 +25,7 @@ const HomeImage = () => {
 
   return (
     <section className="relative w-full bg-primary lg:h-[42rem]">
-      <div className="container2 mx-auto h-full max-md:px-4 max-md:py-10">
+      <div className="md:max-w-[82%] max-w-[90%] mx-auto h-full max-md:px-4 max-md:py-10">
         <div className="grid md:grid-cols-2 gap-x-[2rem] w-full h-full items-center max-md:flex max-md:flex-col max-md:gap-y-8">
           {/* Left Side: Text List */}
           <div className="flex flex-col justify-center w-full max-md:order-1">
