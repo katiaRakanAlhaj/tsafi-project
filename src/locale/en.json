@@ -2,6 +2,7 @@
   "download_app": "DOWNLOAD APP",
   "sign_up": "SIGN UP AS BUSINESS",
   "menu": {
+    "Home":"Home",
     "Business": "Business",
     "About": "About",
     "sign_up": "Sign up as Business",

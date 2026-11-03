@@ -1,8 +1,17 @@
 import i18next from "i18next";
-import heroImage from "@/assets/images/heroImage.png";
+const HomeImage = ({ homePageData }) => {
+  // Works whether the parent passes the full response, `data`, or the `sections` array
+  const sections =
+    homePageData?.data?.sections ??
+    homePageData?.sections ??
+    (Array.isArray(homePageData) ? homePageData : []);
 
-const HomeImage = () => {
-  const features = ["LOWER PRICES", "EXCELLENT QUALITY", "ZERO WASTE"];
+  const hero = sections.find((section) => section.key === "hero");
+
+  const features = hero?.highlights ?? [];
+  const tagline = hero?.tagline?.trim();
+  const imageSrc = hero?.image?.original; // fallback to local image
+
   const buttonClasses =
     "lg:w-[17rem] md:w-[14rem] lg:h-[3.3rem] md:h-[3rem] font-bold text-[#000000] cursor-pointer rounded-full bg-[#F5F5F5] max-md:w-full max-md:h-[3.5rem] md:text-[1rem] text-sm";
 
@@ -43,11 +52,13 @@ const HomeImage = () => {
               ))}
             </ul>
 
-            <p className="text-white md:text-lg text-md mt-[2.5rem] lg:px-[2rem] max-md:mt-6 max-md:text-sm">
-              Because preserving blessings is everyone's responsibility.
-            </p>
+            {tagline && (
+              <p className="text-white md:text-lg text-md mt-[2.5rem] lg:px-[2rem] max-md:mt-6 max-md:text-sm">
+                {tagline}
+              </p>
+            )}
 
-            {/* Desktop buttons (inside container) */}
+            {/* Desktop buttons */}
             <div className="lg:flex space-y-[1rem] gap-x-[3rem] mt-[3rem] max-md:hidden">
               {renderButtons()}
             </div>
@@ -56,15 +67,15 @@ const HomeImage = () => {
           {/* Right Side: Image */}
           <div className="flex justify-center items-center h-full max-md:order-2 max-md:w-full max-md:mt-4">
             <img
-              className="w-full h-[37rem] object-contain max-md:h-auto "
-              src={heroImage}
+              className="w-full h-[37rem] object-contain max-md:h-auto"
+              src={imageSrc}
               alt="Hero"
             />
           </div>
         </div>
       </div>
 
-      {/* Mobile-only buttons: OUTSIDE the container */}
+      {/* Mobile-only buttons */}
       <div className="hidden max-md:flex flex-col items-center gap-4 px-4 pb-10 w-full">
         {renderButtons()}
       </div>

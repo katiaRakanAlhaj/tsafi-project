@@ -1,15 +1,17 @@
-import AboutHero from "@/features/About/aboutHero";
-import DiscoverLocaleFavorites from "@/features/About/discoverLocaleFavorites";
-import ChooseSurpriseBags from "@/features/About/chooseSurpriseBags";
-import BrowseCafe from "../features/About/browseCafe";
+import AboutHero from "@/features/About/component/aboutHero";
+import DiscoverLocaleFavorites from "@/features/About/component/discoverLocaleFavorites";
+import ChooseSurpriseBags from "@/features/About/component/chooseSurpriseBags";
+import BrowseCafe from "@/features/About/component/browseCafe";
+import { useFetchAboutPage } from "@/features/About/hook/useFetchAbout";
 
 const About = () => {
+  const { data: aboutPageData ,isLoading:aboutPageDataLoading , error:aboutPageDataError} = useFetchAboutPage();
   return (
     <div>
-      <AboutHero />
-      <DiscoverLocaleFavorites />
-      <BrowseCafe />
-      <ChooseSurpriseBags />
+      <AboutHero aboutPageData = {aboutPageData}/>
+      <DiscoverLocaleFavorites aboutPageData = {aboutPageData}/>
+      <BrowseCafe aboutPageData = {aboutPageData}/>
+      <ChooseSurpriseBags aboutPageData = {aboutPageData}/>
     </div>
   );
 };

@@ -4,10 +4,10 @@ import logo from "@/assets/images/logo.svg";
 // import logoAr from "@/assets/images/logo-ar.svg"; // Arabic logo (تصافي), if you have a separate file
 
 const navLinks = [
-  { key: "Business", path: "#" },
+  { key: "Home", path: "" },
   { key: "About", path: "About" },
-  { key: "sign_up", path: "#" },
-  { key: "login", path: "#" },
+  // { key: "sign_up", path: "#" },
+  // { key: "login", path: "#" },
 ];
 
 const Navbar = () => {
