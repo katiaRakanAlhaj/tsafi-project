@@ -2,10 +2,28 @@
   "download_app": "DOWNLOAD APP",
   "sign_up": "SIGN UP AS BUSINESS",
   "menu": {
-    "Home":"Home",
+    "Home": "Home",
     "Business": "Business",
     "About": "About",
     "sign_up": "Sign up as Business",
     "login": "My Store login"
+  },
+  "footer": {
+    "legal": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "cookie_policy": "Cookie Policy",
+    "terms_and_conditions": "Terms & Conditions",
+    "food_waste_sources": "Food Waste Sources"
+  },
+  "errorMessage": {
+    "errorOops": "Just a moment...",
+    "errorMessage": "We're working on it. Please wait while we get things ready.",
+    "errorRetryButton": "Try Again"
+  },
+  "notFound": {
+    "title": "Oops! This page can't be found.",
+    "message": "The page may have moved or the link may be incorrect.",
+    "backHome": "Back to Home",
+    "contactUs": "Contact Us"
   }
 }

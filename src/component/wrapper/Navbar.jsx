@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/images/logo.svg";
+import { scrollToDownload } from "@/utils/scrollToDownload";
 // import logoAr from "@/assets/images/logo-ar.svg"; // Arabic logo (تصافي), if you have a separate file
 
 const navLinks = [
@@ -30,7 +31,9 @@ const Navbar = () => {
         : `/${newLang}${currentPath === "/" ? "" : currentPath}`;
 
       // assign() already navigates and reloads, so navigate() is redundant
-      window.location.assign(`${updatedPath}${location.search}${location.hash}`);
+      window.location.assign(
+        `${updatedPath}${location.search}${location.hash}`,
+      );
     } catch (error) {
       console.error("Failed to change language:", error);
     }
@@ -41,7 +44,7 @@ const Navbar = () => {
       <div className="w-full bg-primary">
         {/* dir="ltr" keeps the layout identical in Arabic: logo left, toggle right */}
         <div
-          dir="ltr"
+          // dir="ltr"
           className="container5 mx-auto flex justify-between items-center h-[7rem] px-4 w-full"
         >
           {/* Logo */}
@@ -57,7 +60,9 @@ const Navbar = () => {
 
           {/* Links + download + language */}
           <div className="flex items-center gap-6">
-            <nav className={`hidden lg:flex items-center gap-5 text-white ${i18n.language === "ar" ? "text-[1.3rem]" : "text-[1.2rem]"}`}>
+            <nav
+              className={`hidden lg:flex items-center gap-5 text-white ${i18n.language === "ar" ? "text-[1.3rem]" : "text-[1.2rem]"}`}
+            >
               {navLinks.map((link, index) => (
                 <div key={link.key} className="flex items-center gap-4">
                   <Link
@@ -76,6 +81,7 @@ const Navbar = () => {
             </nav>
 
             <button
+              onClick={scrollToDownload}
               type="button"
               dir={isAr ? "rtl" : "ltr"}
               className="bg-white text-primary font-bold w-[13rem] py-[1rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1.1rem] cursor-pointer"

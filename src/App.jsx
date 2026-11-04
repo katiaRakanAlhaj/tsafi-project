@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import "../src/i18n/i18n"; // ensure i18n is initialized before rendering
+import SplashScreen from "./component/SplashScreen";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,6 +19,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <SplashScreen />
       <RouterProvider router={router} />
     </QueryClientProvider>
   );

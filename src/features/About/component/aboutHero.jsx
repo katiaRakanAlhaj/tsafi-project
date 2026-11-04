@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { scrollToDownload } from "@/utils/scrollToDownload";
 
 const AboutHero = ({ aboutPageData }) => {
   const { i18n, t } = useTranslation();
@@ -61,6 +62,7 @@ const AboutHero = ({ aboutPageData }) => {
           )}
 
           <button
+            onClick={scrollToDownload}
             className={`w-full md:w-[14rem] lg:w-[17rem] lg:h-[3.3rem] md:h-[3rem] h-[3.3rem] text-lg font-[600] text-black cursor-pointer rounded-full bg-[#F5F5F5] ${isEn ? "mt-[1.5rem]" : "lg:mt-[2.5rem] mt-[1.5rem]"}`}
           >
             {t("download_app")}

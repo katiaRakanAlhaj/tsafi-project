@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import Wrapper from "./component/wrapper/wrapper";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import PageNotFound from "./component/PageNotFound";
 
 const SUPPORTED_LANGS = ["en", "ar"];
 const DEFAULT_LANG = "ar";
@@ -64,26 +65,26 @@ export const router = createBrowserRouter([
 
   // 2. Language-scoped routes. NOT children of "/" — this is the key fix.
   {
-    path: "/:lang",
-    loader: ({ params }) => {
-      if (!isSupported(params.lang)) {
-        throw redirect(`/${getSavedLanguage()}`);
-      }
-      return null;
-    },
-    element: <LanguageLayout />,
-    children: [
-      {
-        // Pathless layout: Navbar + Footer + Outlet
-        element: <Wrapper />,
-        children: [
-          { index: true, element: <Home /> },
-          // Add more pages here:
-          { path: "About", element: <About /> },
-        ],
-      },
-    ],
+  path: "/:lang",
+  loader: ({ params, request }) => {
+    if (!isSupported(params.lang)) {
+      const { pathname, search } = new URL(request.url);
+      throw redirect(`/${getSavedLanguage()}${pathname}${search}`);
+    }
+    return null;
   },
+  element: <LanguageLayout />,
+  children: [
+    {
+      element: <Wrapper />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "About", element: <About /> },
+        { path: "*", element: <PageNotFound /> },
+      ],
+    },
+  ],
+},
 
   // 3. Catch-all unknown URL → saved lang
   {

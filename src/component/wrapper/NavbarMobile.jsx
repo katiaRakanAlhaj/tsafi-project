@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/images/logo.svg";
+import { scrollToDownload } from "@/utils/scrollToDownload";
 
 const navLinks = [
-  { key: "Business", path: "#" },
+  { key: "Home", path: "/" },
   { key: "About", path: "About" },
-  { key: "sign_up", path: "#" },
-  { key: "login", path: "#" },
+  // { key: "sign_up", path: "#" },
+  // { key: "login", path: "#" },
 ];
 
 const NavbarMobile = () => {
@@ -31,7 +32,9 @@ const NavbarMobile = () => {
         : `/${newLang}${currentPath === "/" ? "" : currentPath}`;
 
       navigate(`${updatedPath}${location.search}${location.hash}`);
-      window.location.assign(`${updatedPath}${location.search}${location.hash}`);
+      window.location.assign(
+        `${updatedPath}${location.search}${location.hash}`,
+      );
     } catch (error) {
       console.error("Failed to change language:", error);
     }
@@ -78,7 +81,11 @@ const NavbarMobile = () => {
                   stroke="currentColor"
                   strokeWidth={2.5}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               ) : (
                 // Hamburger icon
@@ -90,7 +97,11 @@ const NavbarMobile = () => {
                   stroke="currentColor"
                   strokeWidth={2.5}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               )}
             </button>
@@ -114,6 +125,7 @@ const NavbarMobile = () => {
             </nav>
 
             <button
+              onClick={scrollToDownload}
               type="button"
               className="mt-3 w-full bg-white text-primary font-bold px-[1.6rem] py-[0.8rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1rem] cursor-pointer"
             >

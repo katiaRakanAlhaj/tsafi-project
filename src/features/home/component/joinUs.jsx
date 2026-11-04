@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { scrollToDownload } from "@/utils/scrollToDownload";
 
 const JoinUs = ({ homePageData }) => {
   const { t } = useTranslation();
@@ -25,7 +26,9 @@ const JoinUs = ({ homePageData }) => {
         </div>
       )}
       <div className="md:flex md:space-y-0 space-y-[1rem] justify-center items-center lg:gap-x-[3rem] md:gap-x-[1rem] lg:mt-[3rem] md:mt-[2rem] lg:px-0 md:px-0 px-[1.5rem] md:mt-0 mt-[1rem]">
-        <button className={buttonClasses}>{t("download_app")}</button>
+        <button onClick={scrollToDownload} className={buttonClasses}>
+          {t("download_app")}
+        </button>
         <button className={buttonClasses}>{t("sign_up")}</button>
       </div>
     </div>

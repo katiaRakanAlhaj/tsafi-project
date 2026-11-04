@@ -1,4 +1,5 @@
 import i18next from "i18next";
+import { scrollToDownload } from "@/utils/scrollToDownload";
 const HomeImage = ({ homePageData }) => {
   // Works whether the parent passes the full response, `data`, or the `sections` array
   const sections =
@@ -18,17 +19,18 @@ const HomeImage = ({ homePageData }) => {
   const renderButtons = () => (
     <>
       <button
+        onClick={scrollToDownload}
         style={{ boxShadow: "0px 4px 6px -4px #0000001A" }}
         className={buttonClasses}
       >
         <p>{i18next.t("download_app")}</p>
       </button>
-      <button
+      {/* <button
         style={{ boxShadow: "0px 4px 6px -4px #0000001A" }}
         className={buttonClasses}
       >
         <p>{i18next.t("sign_up")}</p>
-      </button>
+      </button> */}
     </>
   );
 

@@ -2,8 +2,10 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import NavbarMobile from "./NavbarMobile";
 import Footer from "./footer";
+import { useFetchFooter } from "./hook/useFetchFooter";
 
 function Wrapper() {
+  const { data: footerData } = useFetchFooter();
   return (
     <div className="size-full relative">
       {/* <ScrollToTop /> */}
@@ -18,7 +20,7 @@ function Wrapper() {
       <div className="min-h-screen">
         <Outlet />
       </div>
-      <Footer />
+      <Footer footerData={footerData?.data} />
     </div>
   );
 }
