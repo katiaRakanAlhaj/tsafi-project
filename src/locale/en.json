@@ -25,5 +25,13 @@
     "message": "The page may have moved or the link may be incorrect.",
     "backHome": "Back to Home",
     "contactUs": "Contact Us"
+  },
+  "signUp":{
+    "register_buisness":"Register your business",
+    "add_store":"Add your store now",
+    "next":"Next",
+    "have_account":"Already have an account?",
+    "Login":"Log in",
+    "check_details":"Check your details"
   }
 }

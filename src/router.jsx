@@ -10,6 +10,7 @@ import Wrapper from "./component/wrapper/wrapper";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import PageNotFound from "./component/PageNotFound";
+import SignUp from "./pages/SignUp";
 
 const SUPPORTED_LANGS = ["en", "ar"];
 const DEFAULT_LANG = "ar";
@@ -65,26 +66,28 @@ export const router = createBrowserRouter([
 
   // 2. Language-scoped routes. NOT children of "/" — this is the key fix.
   {
-  path: "/:lang",
-  loader: ({ params, request }) => {
-    if (!isSupported(params.lang)) {
-      const { pathname, search } = new URL(request.url);
-      throw redirect(`/${getSavedLanguage()}${pathname}${search}`);
-    }
-    return null;
-  },
-  element: <LanguageLayout />,
-  children: [
-    {
-      element: <Wrapper />,
-      children: [
-        { index: true, element: <Home /> },
-        { path: "About", element: <About /> },
-        { path: "*", element: <PageNotFound /> },
-      ],
+    path: "/:lang",
+    loader: ({ params, request }) => {
+      if (!isSupported(params.lang)) {
+        const { pathname, search } = new URL(request.url);
+        throw redirect(`/${getSavedLanguage()}${pathname}${search}`);
+      }
+      return null;
     },
-  ],
-},
+    element: <LanguageLayout />,
+    children: [
+      {
+        element: <Wrapper />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: "About", element: <About /> },
+          { path: "SignUp", element: <SignUp /> },
+
+          { path: "*", element: <PageNotFound /> },
+        ],
+      },
+    ],
+  },
 
   // 3. Catch-all unknown URL → saved lang
   {

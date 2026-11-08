@@ -29,7 +29,7 @@ const BrowseCafe = ({ aboutPageData }) => {
         >
           {title && (
             <h2
-              className={`lg:text-[2rem] text-[1.5rem] font-bold leading-[2.75rem] text-primary ${isEn ? "lg:w-[90%]" : "lg:w-[100%]"}`}
+              className={`lg:text-[2rem] text-[1.5rem] mt-[3rem] font-bold leading-[2.75rem] text-primary ${isEn ? "lg:w-[90%]" : "lg:w-[100%]"}`}
             >
               {title}
             </h2>
