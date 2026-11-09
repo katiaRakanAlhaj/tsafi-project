@@ -1,19 +1,12 @@
-import { FaArrowLeft } from "react-icons/fa";
 import i18next from "i18next";
-import SignUpTitle from "../../../component/ux/signUpTitle";
+import SignUpTitle from "@/component/ux/signUpTitle";
+import PrimaryButton from "@/component/ux/primaryButton";
+import BackButton from "@/component/ux/backButton";
 
 const CheckDetails = ({ onBack, onConfirm }) => {
   return (
     <div>
-      <button
-        type="button"
-        onClick={onBack}
-        aria-label="Back"
-        className="w-[3rem] h-[3rem] rounded-full bg-[#52D1A1] cursor-pointer flex justify-center items-center text-white text-2xl"
-      >
-        <FaArrowLeft className="rtl:rotate-180" />
-      </button>
-
+      <BackButton onClick={onBack} />
       <div className="mt-[1.5rem]">
         <SignUpTitle title={i18next.t("signUp.check_details")} />
       </div>
@@ -35,8 +28,9 @@ const CheckDetails = ({ onBack, onConfirm }) => {
           +1 450-233-0181
         </p>
       </div>
-
-      
+      <PrimaryButton onClick={onConfirm} className="mt-[1.1rem]  w-[26.5rem]">
+        {i18next.t("signUp.next")}
+      </PrimaryButton>
     </div>
   );
 };

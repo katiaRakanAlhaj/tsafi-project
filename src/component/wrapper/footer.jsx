@@ -19,7 +19,10 @@ const socialIcons = {
 
 const Footer = ({ footerData }) => {
   const location = useLocation();
-  const isAbout = location.pathname.toLowerCase().includes("about");
+  const path = location.pathname.toLowerCase();
+  const isAbout = path.includes("about");
+  const isSignUp = path.includes("signup");
+  const noTopMargin = isAbout || isSignUp;
 
   const links = footerData?.links;
   const googlePlayLink = links?.google_play;
@@ -41,7 +44,7 @@ const Footer = ({ footerData }) => {
   return (
     <div
       className={`w-full md:h-[28rem] bg-[#136766] py-[2rem] ${
-        isAbout ? "mt-0" : "mt-[5rem]"
+        noTopMargin ? "mt-0" : "mt-[5rem]"
       }`}
     >
       <div className="flex justify-center items-center flex-col space-y-[1.5rem]">

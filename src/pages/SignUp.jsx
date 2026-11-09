@@ -3,21 +3,24 @@ import { Search, X } from "lucide-react";
 import signUpImage from "../assets/images/signUpImage.jpg";
 import i18next from "i18next";
 import CheckDetails from "../features/SignUp/component/checkDetails";
+import OpeningDays from "../features/SignUp/component/openingDays";
+import LoginDetails from "../features/SignUp/component/loginDetails";
 import SignUpTitle from "../component/ux/signUpTitle";
 import PrimaryButton from "../component/ux/primaryButton";
 
 const SignUp = () => {
   const [query, setQuery] = useState("");
-  const [step, setStep] = useState(1); // 1 = search store, 2 = check details
+  // 1 = search store, 2 = check details, 3 = opening days, 4 = login details
+  const [step, setStep] = useState(1);
 
   return (
     <div className="grid grid-cols-12">
       {/* Image stays the same for every step */}
       <div className="col-span-5">
         <img
-          className="w-full h-[45rem] object-cover"
+          className="w-full h-[47rem] object-cover"
           src={signUpImage}
-          alt=""
+          alt="signUpImage"
         />
       </div>
 
@@ -55,6 +58,7 @@ const SignUp = () => {
                 </button>
               )}
             </div>
+
             <PrimaryButton
               onClick={() => setStep(2)}
               className="w-[26.5rem] mt-[1.1rem]"
@@ -71,7 +75,21 @@ const SignUp = () => {
           </>
         )}
 
-        {step === 2 && <CheckDetails onBack={() => setStep(1)} />}
+        {step === 2 && (
+          <CheckDetails
+            onBack={() => setStep(1)}
+            onConfirm={() => setStep(3)}
+          />
+        )}
+
+        {step === 3 && (
+          <OpeningDays
+            onBack={() => setStep(2)}
+            onNext={() => setStep(4)}
+          />
+        )}
+
+        {step === 4 && <LoginDetails onBack={() => setStep(3)} />}
       </div>
     </div>
   );
