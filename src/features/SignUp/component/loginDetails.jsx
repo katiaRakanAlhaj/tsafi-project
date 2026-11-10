@@ -5,7 +5,7 @@ import SignUpTitle from "@/component/ux/signUpTitle";
 import PrimaryButton from "@/component/ux/primaryButton";
 import i18next from "i18next";
 
-const LoginDetails = ({ onBack }) => {
+const LoginDetails = ({ onBack, onNext }) => {
   const [agreeNewsletter, setAgreeNewsletter] = useState(false);
 
   const inputClasses =
@@ -58,7 +58,7 @@ const LoginDetails = ({ onBack }) => {
           </span>
         </button>
       </div>
-      <PrimaryButton className="w-[29rem] mt-[1.5rem]">
+      <PrimaryButton onClick={onNext} className="w-[29rem] mt-[1.5rem]">
         {i18next.t("signUp.next")}
       </PrimaryButton>
     </div>

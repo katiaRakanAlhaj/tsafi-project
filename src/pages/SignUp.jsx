@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Search, X } from "lucide-react";
-import signUpImage from "../assets/images/signUpImage.jpg";
+import signUpImage from "@/assets/images/signUpImage.jpg";
 import i18next from "i18next";
-import CheckDetails from "../features/SignUp/component/checkDetails";
-import OpeningDays from "../features/SignUp/component/openingDays";
-import LoginDetails from "../features/SignUp/component/loginDetails";
-import SignUpTitle from "../component/ux/signUpTitle";
-import PrimaryButton from "../component/ux/primaryButton";
+import CheckDetails from "@/features/SignUp/component/checkDetails";
+import OpeningDays from "@/features/SignUp/component/openingDays";
+import LoginDetails from "@/features/SignUp/component/loginDetails";
+import SignUpTitle from "@/component/ux/signUpTitle";
+import PrimaryButton from "@/component/ux/primaryButton";
+import CheckInbox from "@/features/SignUp/component/checkInbox";
 
 const SignUp = () => {
   const [query, setQuery] = useState("");
@@ -14,9 +15,9 @@ const SignUp = () => {
   const [step, setStep] = useState(1);
 
   return (
-    <div className="grid grid-cols-12">
+    <div className="grid lg:grid-cols-12 grid-cols-1">
       {/* Image stays the same for every step */}
-      <div className="col-span-5">
+      <div className="lg:col-span-5 col-span-1">
         <img
           className="w-full h-[47rem] object-cover"
           src={signUpImage}
@@ -25,7 +26,12 @@ const SignUp = () => {
       </div>
 
       {/* Same column and same padding for every step */}
-      <div className="col-span-7 flex flex-col justify-center px-[9rem]">
+      <div
+        className={`lg:col-span-7 col-span-1 flex flex-col justify-center px-[9rem] ${
+          step === 5 ? "bg-[#105D55]" : ""
+        }`}
+      >
+   
         {step === 1 && (
           <>
             <SignUpTitle title={i18next.t("signUp.register_buisness")} />
@@ -74,22 +80,19 @@ const SignUp = () => {
             </p>
           </>
         )}
-
         {step === 2 && (
           <CheckDetails
             onBack={() => setStep(1)}
             onConfirm={() => setStep(3)}
           />
         )}
-
         {step === 3 && (
-          <OpeningDays
-            onBack={() => setStep(2)}
-            onNext={() => setStep(4)}
-          />
+          <OpeningDays onBack={() => setStep(2)} onNext={() => setStep(4)} />
         )}
-
-        {step === 4 && <LoginDetails onBack={() => setStep(3)} />}
+        {step === 4 && (
+          <LoginDetails onBack={() => setStep(3)} onNext={() => setStep(5)} />
+        )}
+        {step === 5 && <CheckInbox onBack={() => setStep(4)} />}
       </div>
     </div>
   );
