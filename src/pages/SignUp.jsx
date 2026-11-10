@@ -31,7 +31,6 @@ const SignUp = () => {
           step === 5 ? "bg-[#105D55]" : ""
         }`}
       >
-   
         {step === 1 && (
           <>
             <SignUpTitle title={i18next.t("signUp.register_buisness")} />

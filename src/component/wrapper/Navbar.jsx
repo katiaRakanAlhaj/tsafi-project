@@ -7,7 +7,7 @@ import { scrollToDownload } from "@/utils/scrollToDownload";
 const navLinks = [
   { key: "Home", path: "" },
   { key: "About", path: "About" },
-  { key: "sign_up", path: "SignUp" },
+  // { key: "sign_up", path: "SignUp" },
   // { key: "login", path: "#" },
 ];
 
