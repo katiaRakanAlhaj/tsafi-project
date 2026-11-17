@@ -1,6 +1,12 @@
 import i18next from "i18next";
-import { scrollToDownload } from "@/utils/scrollToDownload";
+import { handleDownloadClick } from "@/utils/openStore";
+import { useFetchFooter } from "../../../component/wrapper/hook/useFetchFooter";
+// TODO: fix this path to where your useFetchFooter hook file is
+
 const HomeImage = ({ homePageData }) => {
+  const { data: settings } = useFetchFooter();
+  const links = settings?.data?.links;
+
   // Works whether the parent passes the full response, `data`, or the `sections` array
   const sections =
     homePageData?.data?.sections ??
@@ -18,8 +24,10 @@ const HomeImage = ({ homePageData }) => {
 
   const renderButtons = () => (
     <>
+      {/* Desktop: scroll to footer | Android: Google Play | iOS: App Store */}
       <button
-        onClick={scrollToDownload}
+        type="button"
+        onClick={() => handleDownloadClick(links)}
         style={{ boxShadow: "0px 4px 6px -4px #0000001A" }}
         className={buttonClasses}
       >

@@ -4,8 +4,8 @@ import linkedIn from "@/assets/images/linkedIn.svg";
 import tiktok from "@/assets/images/tiktok.svg";
 import instgram from "@/assets/images/instgram.svg";
 import twitter from "@/assets/images/twitter.svg";
-import googleplay from "@/assets/images/googleplay.png";
-import AppStore from "@/assets/images/AppStore.png";
+import googleplay from "@/assets/images/googleplay (2).png";
+import AppStore from "@/assets/images/AppStore (2).png";
 import i18next from "i18next";
 
 // Maps the API "key" to a local icon
@@ -44,7 +44,7 @@ const Footer = ({ footerData }) => {
   return (
     <div
       className={`w-full md:h-[28rem] bg-[#136766] py-[2rem] ${
-        noTopMargin ? "mt-0" : "mt-[5rem]"
+        noTopMargin ? "lg:mt-0 mt-[4rem]" : "mt-[5rem]"
       }`}
     >
       <div className="flex justify-center items-center flex-col space-y-[1.5rem]">

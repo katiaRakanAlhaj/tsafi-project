@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/images/logo.svg";
-import { scrollToDownload } from "@/utils/scrollToDownload";
+import { handleDownloadClick } from "@/utils/openStore";
 
 const navLinks = [
   { key: "Home", path: "/" },
@@ -11,9 +11,9 @@ const navLinks = [
   // { key: "login", path: "#" },
 ];
 
-const NavbarMobile = () => {
+// `links` comes from the website settings API (data.links)
+const NavbarMobile = ({ links }) => {
   const { i18n, t } = useTranslation();
-  const navigate = useNavigate();
   const location = useLocation();
   const { lang } = useParams();
   const [isOpen, setIsOpen] = useState(false);
@@ -31,13 +31,19 @@ const NavbarMobile = () => {
         ? currentPath.replace(/^\/[^/]+/, `/${newLang}`)
         : `/${newLang}${currentPath === "/" ? "" : currentPath}`;
 
-      navigate(`${updatedPath}${location.search}${location.hash}`);
+      // assign() already navigates and reloads
       window.location.assign(
         `${updatedPath}${location.search}${location.hash}`,
       );
     } catch (error) {
       console.error("Failed to change language:", error);
     }
+  };
+
+  const onDownload = () => {
+    setIsOpen(false);
+    // Android -> Google Play, iOS -> App Store, otherwise scroll to footer
+    handleDownloadClick(links);
   };
 
   return (
@@ -125,7 +131,7 @@ const NavbarMobile = () => {
             </nav>
 
             <button
-              onClick={scrollToDownload}
+              onClick={onDownload}
               type="button"
               className="mt-3 w-full bg-white text-primary font-bold px-[1.6rem] py-[0.8rem] rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap text-[1rem] cursor-pointer"
             >

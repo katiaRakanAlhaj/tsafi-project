@@ -26,13 +26,13 @@ const OpeningDays = ({ onBack, onNext }) => {
   };
 
   return (
-    <div>
+    <div className="w-full max-w-[26.5rem] mx-auto lg:max-w-none lg:mx-0">
       <BackButton onClick={onBack} />
 
-      <div className="mt-[1.5rem] px-6">
+      <div className="mt-4 md:mt-[1.5rem] lg:px-6">
         <SignUpTitle title={"Confirm your opening days"} />
         <div className="text-[#19776E] w-[72%] mt-2">
-          <p className="text-md font-[500] text-center px-4">
+          <p className="text-sm md:text-[1rem] font-[500] text-center md:px-4">
             We found your operating days in your Google Business Profile.
             <br /> Tap any day to make changes.
           </p>
@@ -40,8 +40,8 @@ const OpeningDays = ({ onBack, onNext }) => {
       </div>
 
       {/* List and button share the same width, so the button centers under the list */}
-      <div className="w-[72%]">
-        <ul className="mt-[2rem]">
+      <div className="w-full lg:w-[72%]">
+        <ul className="mt-5 md:mt-[2rem]">
           {DAYS.map(({ key, label }) => {
             const isSelected = selectedDays.includes(key);
 
@@ -52,9 +52,9 @@ const OpeningDays = ({ onBack, onNext }) => {
                   role="checkbox"
                   aria-checked={isSelected}
                   onClick={() => toggleDay(key)}
-                  className="w-full flex items-center justify-between py-[0.5rem] cursor-pointer"
+                  className="w-full flex items-center justify-between py-3 lg:py-[0.5rem] cursor-pointer"
                 >
-                  <span className="text-[#0E5C54] text-lg font-bold">
+                  <span className="text-[#0E5C54] text-base md:text-lg font-bold">
                     {label}
                   </span>
 
@@ -72,7 +72,7 @@ const OpeningDays = ({ onBack, onNext }) => {
         </ul>
 
         <div className="flex justify-center mt-[1.1rem]">
-          <PrimaryButton onClick={onNext} className="w-[17rem]">
+          <PrimaryButton onClick={onNext} className="w-full max-w-[17rem]">
             {i18next.t("signUp.next")}
           </PrimaryButton>
         </div>

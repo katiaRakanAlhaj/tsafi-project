@@ -9,20 +9,20 @@ const LoginDetails = ({ onBack, onNext }) => {
   const [agreeNewsletter, setAgreeNewsletter] = useState(false);
 
   const inputClasses =
-    "w-[29rem] px-6 h-[3.5rem] focus:outline-0 placeholder-[#B6B6B6] bg-white rounded-full";
+    "w-full px-5 md:px-6 h-[3.25rem] md:h-[3.5rem] focus:outline-0 placeholder-[#B6B6B6] bg-white rounded-full";
 
   return (
-    <div>
+    <div className="w-full max-w-[29rem] mx-auto lg:mx-0">
       <BackButton onClick={onBack} />
-      <div className="mt-[2rem]">
+      <div className="mt-4 md:mt-[2rem]">
         <SignUpTitle title={"Add your login details."} />
-        <div className="text-[#19776E] w-[55%] mt-2">
-          <p className="text-md font-[500] text-center">
+        <div className="text-[#19776E] w-full lg:w-[75%] mt-2">
+          <p className="text-sm md:text-[1rem] font-[500] text-center">
             You need your number or email address to log in to your account.
           </p>
         </div>
 
-        <div className="flex flex-col space-y-[1rem] mt-[2rem]">
+        <div className="flex flex-col space-y-[1rem] mt-5 md:mt-[2rem]">
           <input
             className={inputClasses}
             style={{ boxShadow: "0px 1px 2px 0px #0000000D" }}
@@ -40,7 +40,7 @@ const LoginDetails = ({ onBack, onNext }) => {
           role="checkbox"
           aria-checked={agreeNewsletter}
           onClick={() => setAgreeNewsletter((prev) => !prev)}
-          className="mt-[1.5rem] w-[29rem] flex items-start gap-[1rem] text-start cursor-pointer"
+          className="mt-5 md:mt-[1.5rem] w-full flex items-start gap-3 md:gap-[1rem] text-start cursor-pointer"
         >
           <span
             className={`shrink-0 w-[1.4rem] h-[1.4rem] rounded-[3px] flex items-center justify-center text-white border-2 transition-colors ${
@@ -52,13 +52,14 @@ const LoginDetails = ({ onBack, onNext }) => {
             {agreeNewsletter && <Check size={16} strokeWidth={3} />}
           </span>
 
-          <span className="text-[#0E5C54] text-base leading-snug">
+          <span className="text-[#0E5C54] text-sm md:text-base leading-snug">
             I agree to receive newsletters and information from Tsafi via email,
             SMS, and push notifications. I can unsubscribe at any time.
           </span>
         </button>
       </div>
-      <PrimaryButton onClick={onNext} className="w-[29rem] mt-[1.5rem]">
+
+      <PrimaryButton onClick={onNext} className="w-full mt-5 md:mt-[1.5rem]">
         {i18next.t("signUp.next")}
       </PrimaryButton>
     </div>
