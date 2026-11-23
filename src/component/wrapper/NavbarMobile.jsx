@@ -7,8 +7,8 @@ import { handleDownloadClick } from "@/utils/openStore";
 const navLinks = [
   { key: "Home", path: "/" },
   { key: "About", path: "About" },
-  // { key: "sign_up", path: "#" },
-  // { key: "login", path: "#" },
+  // { key: "sign_up", path: "SignUp" },
+  // { key: "login", path: "Login" },
 ];
 
 // `links` comes from the website settings API (data.links)

@@ -8,7 +8,7 @@ const navLinks = [
   { key: "Home", path: "" },
   { key: "About", path: "About" },
   // { key: "sign_up", path: "SignUp" },
-  // { key: "login", path: "#" },
+  // { key: "login", path: "Login" },
 ];
 
 const Navbar = () => {

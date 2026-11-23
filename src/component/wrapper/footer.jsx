@@ -21,7 +21,7 @@ const Footer = ({ footerData }) => {
   const location = useLocation();
   const path = location.pathname.toLowerCase();
   const isAbout = path.includes("about");
-  const isSignUp = path.includes("signup");
+  const isSignUp = path.includes("signup") || path.includes("login") || path.includes("forgotpassword");
   const noTopMargin = isAbout || isSignUp;
 
   const links = footerData?.links;

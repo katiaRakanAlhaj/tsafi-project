@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import "../src/i18n/i18n"; // ensure i18n is initialized before rendering
 import SplashScreen from "./component/SplashScreen";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,6 +22,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <SplashScreen />
       <RouterProvider router={router} />
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
 }

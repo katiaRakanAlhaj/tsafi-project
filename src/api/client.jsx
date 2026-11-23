@@ -34,6 +34,16 @@ api.interceptors.request.use(
       config.headers["Accept-Language"] = lang;
     }
 
+    // Attach auth token (saved after login) if present
+    const token = localStorage.getItem("token");
+    if (token) {
+      if (typeof config.headers?.set === "function") {
+        config.headers.set("Authorization", `Bearer ${token}`);
+      } else {
+        config.headers["Authorization"] = `Bearer ${token}`;
+      }
+    }
+
     if (import.meta.env?.DEV) {
       console.log("[axios] Accept-Language header:", lang, "->", config.url);
     }

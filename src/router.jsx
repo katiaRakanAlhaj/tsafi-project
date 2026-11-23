@@ -11,6 +11,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import PageNotFound from "./component/PageNotFound";
 import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const SUPPORTED_LANGS = ["en", "ar"];
 const DEFAULT_LANG = "ar";
@@ -82,6 +84,8 @@ export const router = createBrowserRouter([
           { index: true, element: <Home /> },
           { path: "About", element: <About /> },
           { path: "SignUp", element: <SignUp /> },
+          { path: "Login", element: <Login /> },
+          { path: "ForgotPassword", element: <ForgotPassword /> },
 
           { path: "*", element: <PageNotFound /> },
         ],

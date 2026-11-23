@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Search, X } from "lucide-react";
 import signUpImage from "@/assets/images/signUpImage.jpg";
 import i18next from "i18next";
@@ -11,6 +12,8 @@ import PrimaryButton from "@/component/ux/primaryButton";
 import BusinessDetails from "./BusinessDetails";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const { lang } = useParams();
   const [query, setQuery] = useState("");
   // 1 = search, "manual" = business details form, 2 = check details,
   // 3 = opening days, 4 = login details, 5 = check inbox
@@ -96,7 +99,10 @@ const SignUp = () => {
 
             <p className="mt-6 text-[#0E5C54] text-base md:text-lg">
               {i18next.t("signUp.have_account")}
-              <span className="font-bold text-lg md:text-xl underline cursor-pointer">
+              <span
+                onClick={() => navigate(`/${lang || "ar"}/Login`)}
+                className="font-bold text-lg md:text-xl underline cursor-pointer"
+              >
                 {i18next.t("signUp.Login")}
               </span>
             </p>

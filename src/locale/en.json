@@ -26,13 +26,55 @@
     "backHome": "Back to Home",
     "contactUs": "Contact Us"
   },
-  "signUp":{
-    "register_buisness":"Register your business",
-    "add_store":"Add your store now",
-    "next":"Next",
-    "have_account":"Already have an account?",
-    "Login":"Log in",
-    "check_details":"Check your details"
+  "signUp": {
+    "register_buisness": "Register your business",
+    "add_store": "Add your store now",
+    "next": "Next",
+    "have_account": "Already have an account?",
+    "Login": "Log in",
+    "check_details": "Check your details"
+  },
+  "login": {
+    "title": "Log in",
+    "mobile": "Mobile number",
+    "password": "Password",
+    "forgot_password": "Forgot your password?",
+    "submit": "Log in",
+    "sso": "Log in with Single Sign-On",
+    "success": "Logged in successfully",
+    "failed": "Login failed. Please check your details.",
+    "mobile_required": "Mobile number is required",
+    "mobile_invalid": "Please enter a valid mobile number",
+    "password_required": "Password is required",
+    "login_as": "Log in as",
+    "type_client": "Customer",
+    "type_client_desc": "Order food and groceries",
+    "type_store": "Store",
+    "type_store_desc": "Manage your store",
+    "no_account": "Don't have an account?",
+    "create_account": "Create an account"
+  },
+  "forgot": {
+    "title": "Forgot your password?",
+    "subtitle": "Enter your mobile number and we'll send you a verification code.",
+    "send_code": "Send code",
+    "otp_title": "Enter verification code",
+    "otp_subtitle": "We sent a code to",
+    "otp_required": "Please enter the full code",
+    "verify": "Verify",
+    "no_code": "Didn't get the code?",
+    "resend": "Resend",
+    "resend_in": "Resend in {{seconds}}s",
+    "new_password_title": "Set a new password",
+    "new_password_subtitle": "Choose a new password for your account.",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "password_min": "Password must be at least 8 characters",
+    "password_mismatch": "Passwords do not match",
+    "save": "Save password",
+    "otp_sent": "Code sent",
+    "otp_verified": "Code verified",
+    "reset_success": "Password changed. You can log in now.",
+    "failed": "Something went wrong. Please try again."
   }
 }
-
